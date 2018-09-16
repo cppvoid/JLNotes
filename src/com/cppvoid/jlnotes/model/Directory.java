@@ -3,11 +3,28 @@ package com.cppvoid.jlnotes.model;
 import java.util.LinkedList;
 
 public class Directory {
+    public Directory(String name, String databaseId) {
+        this.setName(name);
+        this.setDatabaseId(databaseId);
+    }
+    
+    public String getDatabaseId() {
+        return databaseId;
+    }
+
+    public void setDatabaseId(String databaseId) {
+        this.databaseId = databaseId;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
+        if(name == null) {
+            throw new NullPointerException("Directory: name is null");
+        }
+
         this.name = name;
     }
 
@@ -37,6 +54,7 @@ public class Directory {
         }
     }
 
+    private String databaseId;
     private String name;
     private LinkedList<Directory> directories;
     private LinkedList<Note> notes;
